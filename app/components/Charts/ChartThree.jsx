@@ -1,6 +1,6 @@
 import { ApexOptions } from "apexcharts";
 import React from "react";
-import ReactApexChart from "react-apexcharts";
+import ReactApexChart from "apexcharts";
 
 const options = {
   chart: {

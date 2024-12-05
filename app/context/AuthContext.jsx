@@ -4,10 +4,12 @@ import { createContext, useState, useContext } from "react";
 // import { useRouter } from "next/router";
 import { useRouter } from "next/navigation";
 
+
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
+    const [userRole, setUserRole] = useState(null);
     const router = useRouter();
 
     const signIn = (email, password) => {
@@ -19,11 +21,17 @@ export const AuthProvider = ({ children }) => {
         ];
 
         const foundUser = users.find((u) => u.email === email);
+        console.log("found user role", foundUser.role)
+        if (foundUser.role !== "") {
+            setUserRole(foundUser.role)
+            console.log("Role", userRole);
+        }
 
-        console.log("User:", foundUser);
 
         if (foundUser) {
             setUser(foundUser);
+
+
             // Redirect based on role
             switch (foundUser.role) {
                 case "normal":
@@ -49,7 +57,7 @@ export const AuthProvider = ({ children }) => {
     };
 
     return (
-        <AuthContext.Provider value={{ user, signIn, signOut }}>
+        <AuthContext.Provider value={{ user, userRole, signIn, signOut }}>
             {children}
         </AuthContext.Provider>
     );
