@@ -14,11 +14,11 @@ const VehicleBooking = () => {
     const [endTime, setEndTime] = useState('10:00');
 
     const vehicles = [
-        { id: 1, name: 'Toyota Axio', category: 'Medium Car', price: 'KES 12,000', dailyRate: 'KES 4,000/day', image: '/images/cards/cards-01.png' },
-        { id: 2, name: 'Toyota Probox', category: 'Medium Car', price: 'KES 12,000', dailyRate: 'KES 4,000/day', image: '/images/cards/cards-01.png' },
-        { id: 3, name: 'Toyota Mark X', category: 'Medium Car', price: 'KES 21,000', dailyRate: 'KES 7,000/day', image: '/images/cards/cards-01.png' },
-        { id: 4, name: 'Toyota Rav4', category: 'Mid-Size SUV', price: 'KES 21,000', dailyRate: 'KES 7,000/day', image: '/images/cards/cards-01.png' },
-        { id: 5, name: 'Toyota Vanguard', category: 'Mid-Size SUV', price: 'KES 21,000', dailyRate: 'KES 7,000/day', image: '/images/cards/cards-01.png' },
+        { id: 1, name: 'Toyota Axio', category: 'Medium Car', price: 'KES 12,000', dailyRate: 'KES 4,000/day', image: '/images/cards/cards-01.png', reviews: 4, rating: 3 },
+        { id: 2, name: 'Toyota Probox', category: 'Medium Car', price: 'KES 12,000', dailyRate: 'KES 4,000/day', image: '/images/cards/cards-01.png', reviews: 5, rating: 5 },
+        { id: 3, name: 'Toyota Mark X', category: 'Medium Car', price: 'KES 21,000', dailyRate: 'KES 7,000/day', image: '/images/cards/cards-01.png', reviews: 6, rating: 3 },
+        { id: 4, name: 'Toyota Rav4', category: 'Mid-Size SUV', price: 'KES 21,000', dailyRate: 'KES 7,000/day', image: '/images/cards/cards-01.png', reviews: 15, rating: 4 },
+        { id: 5, name: 'Toyota Vanguard', category: 'Mid-Size SUV', price: 'KES 21,000', dailyRate: 'KES 7,000/day', image: '/images/cards/cards-01.png', reviews: 14, rating: 3 },
     ];
 
     return (
@@ -32,7 +32,7 @@ const VehicleBooking = () => {
 
                 {/* Vehicles List */}
                 <div className="w-full md:w-3/4 p-4">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6">
                         {vehicles.map((vehicle) => (
                             <VehicleCard key={vehicle.id} vehicle={vehicle} />
                         ))}
