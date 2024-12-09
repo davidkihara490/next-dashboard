@@ -22,37 +22,37 @@ const RentalPeriod = () => {
   const daysToCharge = calculateDays(startDate, endDate);
 
   return (
-    <div className="p-5">
-      <h2 className="text-xl mb-4">Select Rental Period</h2>
+<div className="flex justify-center bg-gray-200 items-center shadow-lg p-5 max-w-2xl mx-auto border-lg rounded-sm">
+  <div className="flex flex-row gap-6">
+    {/* Datepicker for Start Date */}
+    <div className="flex flex-col">
+      <label className="mb-2">Start Date</label>
+      <DatePicker
+        selected={startDate}
+        onChange={(date) => setStartDate(date)}
+        showTimeSelect
+        dateFormat="MMM d, yyyy h:mm aa"
+        className="border p-2  rounded-sm"
+      />
+    </div>
 
-      {/* Datepicker for Start Date */}
-      <div className="mb-4">
-        <label>Start Date</label>
-        <DatePicker
-          selected={startDate}
-          onChange={(date) => setStartDate(date)}
-          showTimeSelect
-          dateFormat="MMM d, yyyy h:mm aa"
-          className="border p-2"
-        />
-      </div>
+    {/* Datepicker for End Date */}
+    <div className="flex flex-col">
+      <label className="mb-2">End Date</label>
+      <DatePicker
+        selected={endDate}
+        onChange={(date) => setEndDate(date)}
+        showTimeSelect
+        dateFormat="MMM d, yyyy h:mm aa"
+        className="border p-2  rounded-sm"
+      />
+    </div>
 
-      {/* Datepicker for End Date */}
-      <div className="mb-4">
-        <label>End Date</label>
-        <DatePicker
-          selected={endDate}
-          onChange={(date) => setEndDate(date)}
-          showTimeSelect
-          dateFormat="MMM d, yyyy h:mm aa"
-          className="border p-2"
-        />
-      </div>
-
-      {/* Display number of days and "Charged as X days" */}
+    {/* Display number of days */}
+    <div className="flex flex-col">
       {startDate && endDate && (
-        <div className="mt-4">
-          <p>
+        <>
+          <p className="mt-4">
             {`Start Date: ${startDate.toLocaleString()}`}
           </p>
           <p>
@@ -61,17 +61,21 @@ const RentalPeriod = () => {
           <p>
             {`Charged as ${daysToCharge} days`}
           </p>
-        </div>
+        </>
       )}
 
-      {/* Disable the update button until both dates are selected */}
+      {/* Update Button */}
       <button
         disabled={!startDate || !endDate}
-        className={`mt-4 py-2 px-4 bg-blue-600 text-white rounded ${!startDate || !endDate ? "opacity-50 cursor-not-allowed" : ""}`}
+        className={`mt-8 py-2 px-4 bg-blue-600 text-white rounded ${!startDate || !endDate ? "opacity-50 cursor-not-allowed" : ""}`}
       >
         Update Period
       </button>
     </div>
+  </div>
+</div>
+
+
   );
 };
 
